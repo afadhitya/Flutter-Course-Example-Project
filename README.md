@@ -1,0 +1,1 @@
+This is a repository of example project that I learned from the course of https://www.appbrewery.co/courses/548873/
