@@ -4,19 +4,19 @@ import 'package:audioplayers/audio_cache.dart';
 void main() => runApp(XylophoneApp());
 
 class XylophoneApp extends StatelessWidget {
-
   void playSound(int numberNote) {
     final player = AudioCache();
     player.play('note$numberNote.wav');
   }
 
-  Expanded createXylophoneButton(int number, Color color) {
+  Expanded createXylophoneButton({int number, Color color}) {
     return Expanded(
       child: FlatButton(
         color: color,
         onPressed: () {
           playSound(number);
-        }, child: null,
+        },
+        child: null,
       ),
     );
   }
@@ -30,13 +30,13 @@ class XylophoneApp extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              createXylophoneButton(1, Colors.red),
-              createXylophoneButton(2, Colors.orange),
-              createXylophoneButton(3, Colors.yellow),
-              createXylophoneButton(4, Colors.green),
-              createXylophoneButton(5, Colors.teal),
-              createXylophoneButton(6, Colors.blue),
-              createXylophoneButton(7, Colors.purple),
+              createXylophoneButton(number: 1, color: Colors.red),
+              createXylophoneButton(number: 2, color: Colors.orange),
+              createXylophoneButton(number: 3, color: Colors.yellow),
+              createXylophoneButton(number: 4, color: Colors.green),
+              createXylophoneButton(number: 5, color: Colors.teal),
+              createXylophoneButton(number: 6, color: Colors.blue),
+              createXylophoneButton(number: 7, color: Colors.purple),
             ],
           ),
         ),
