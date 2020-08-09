@@ -1,7 +1,6 @@
 import 'package:quizzler/question.dart';
 
 class QuizBrain {
-
   int _questionNumber = 0;
 
   List<Question> _questionBank = [
@@ -44,5 +43,15 @@ class QuizBrain {
     if (_questionNumber < _questionBank.length - 1) {
       _questionNumber++;
     }
+  }
+
+  bool isFinished() {
+    print('$_questionNumber');
+    print(_questionBank.length.toString());
+    return _questionNumber == _questionBank.length - 1;
+  }
+
+  void reset() {
+    _questionNumber = 0;
   }
 }
