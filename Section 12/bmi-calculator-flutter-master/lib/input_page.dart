@@ -7,9 +7,9 @@ import 'reusable_card.dart';
 
 const activeCardColor = Color(0xFF1D1E33);
 const inactiveCardColor = Color(0xFF111328);
-const int RED = 0xFFEB1555;
-const BOTTOM_BUTTON_TOP_MARGIN = 10.00;
-const BOTTOM_CONTAINER_HEIGHT = 80.00;
+const bottomButtonColor = Color(0xFFEB1555);
+const bottomButtonTopMargin = 10.00;
+const bottomContainerHeight = 80.00;
 
 class InputPage extends StatefulWidget {
   @override
@@ -25,17 +25,12 @@ class _InputPageState extends State<InputPage> {
       appBar: AppBar(
         title: Text('BMI CALCULATOR'),
       ),
-      body: Column(children: [
-        Expanded(
-          child: Row(
-            children: [
-              Expanded(
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      selectedGender = Gender.male;
-                    });
-                  },
+      body: Column(
+        children: [
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(
                   child: ReusableCard(
                     color: selectedGender == Gender.male
                         ? activeCardColor
@@ -44,16 +39,14 @@ class _InputPageState extends State<InputPage> {
                       icon: FontAwesomeIcons.mars,
                       label: 'MALE',
                     ),
+                    onPress: () {
+                      setState(() {
+                        selectedGender = Gender.male;
+                      });
+                    },
                   ),
                 ),
-              ),
-              Expanded(
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      selectedGender = Gender.female;
-                    });
-                  },
+                Expanded(
                   child: ReusableCard(
                     color: selectedGender == Gender.female
                         ? activeCardColor
@@ -62,38 +55,45 @@ class _InputPageState extends State<InputPage> {
                       icon: FontAwesomeIcons.venus,
                       label: 'FEMALE',
                     ),
+                    onPress: () {
+                      setState(() {
+                        selectedGender = Gender.female;
+                      });
+                    },
                   ),
                 ),
-              ),
-            ],
-          ),
-        ),
-        Expanded(
-          child: ReusableCard(
-            color: activeCardColor,
-          ),
-        ),
-        Expanded(
-          child: Row(children: [
-            Expanded(
-              child: ReusableCard(
-                color: activeCardColor,
-              ),
+              ],
             ),
-            Expanded(
-              child: ReusableCard(
-                color: activeCardColor,
-              ),
+          ),
+          Expanded(
+            child: ReusableCard(
+              color: activeCardColor,
             ),
-          ]),
-        ),
-        Container(
-          color: Color(RED),
-          margin: EdgeInsets.only(top: BOTTOM_BUTTON_TOP_MARGIN),
-          width: double.infinity,
-          height: BOTTOM_CONTAINER_HEIGHT,
-        )
-      ]),
+          ),
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(
+                  child: ReusableCard(
+                    color: activeCardColor,
+                  ),
+                ),
+                Expanded(
+                  child: ReusableCard(
+                    color: activeCardColor,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            color: bottomButtonColor,
+            margin: EdgeInsets.only(top: bottomButtonTopMargin),
+            width: double.infinity,
+            height: bottomContainerHeight,
+          )
+        ],
+      ),
     );
   }
 }
